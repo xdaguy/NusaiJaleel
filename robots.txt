@@ -1,0 +1,7 @@
+# robots.txt for Nusai Jaleel personal site
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://xdaguy.github.io/NusaiJaleel/sitemap.xml
