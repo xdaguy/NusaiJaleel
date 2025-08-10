@@ -36,9 +36,10 @@
 
 /* WhatsApp Float Button */
 .whatsapp-float {
-    position: fixed;
-    bottom: 90px;
-    right: 30px;
+    position: fixed !important;
+    bottom: 90px !important;
+    right: 30px !important;
+    left: auto !important;
     width: 60px;
     height: 60px;
     background: #25d366;
@@ -48,7 +49,7 @@
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    z-index: 999;
+    z-index: 1001;
     box-shadow: var(--shadow-lg);
     transition: var(--transition);
     animation: pulse 2s infinite;
