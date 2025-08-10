@@ -11,11 +11,26 @@
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
     z-index: 1000;
-    transition: var(--transition);
+    transition: transform 0.35s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
-.navbar.scrolled {
-    box-shadow: var(--shadow-md);
+/* Backwards-compat: older class name */
+.navbar.scrolled { box-shadow: var(--shadow-md); }
+
+/* New JS-driven classes */
+.navbar.nav-scrolled { box-shadow: var(--shadow-md); }
+.navbar.nav-hidden { transform: translateY(-100%); }
+
+/* Scroll progress bar */
+#scrollProgress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0;
+    background: var(--gradient-secondary);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    transition: width 0.2s ease;
 }
 
 .nav-wrapper {
@@ -36,8 +51,10 @@
     font-size: 1.5rem;
     font-weight: 800;
     background: var(--gradient-secondary);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 .logo-subtitle {

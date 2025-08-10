@@ -48,4 +48,11 @@
     --font-3xl: 2rem;
     --font-4xl: 2.5rem;
     --font-5xl: 3rem;
+
+    /* Motion & Easing */
+    --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+    --transition-fast: 150ms var(--ease-smooth);
+    --transition-normal: 300ms var(--ease-smooth);
+    --transition-slow: 500ms var(--ease-smooth);
 }
