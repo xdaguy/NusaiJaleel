@@ -213,7 +213,7 @@ body {
 - Include call-to-actions
 
 ### Blog Post Ideas
-1. "Digital Marketing Trends in Kerala 2024"
+1. "Digital Marketing Trends in Kerala 2025"
 2. "How to Grow Your Business in Kasaragod"
 3. "Social Media Marketing for Kannur Businesses"
 4. "Local SEO Guide for Kerala Businesses"
