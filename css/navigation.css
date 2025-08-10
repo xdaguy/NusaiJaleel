@@ -77,6 +77,13 @@
     padding: 5px 0;
 }
 
+/* Keyboard accessibility */
+.nav-link:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--primary-color) 60%, #ffffff);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
 .nav-link::after {
     content: '';
     position: absolute;
