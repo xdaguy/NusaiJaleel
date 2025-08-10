@@ -1,0 +1,127 @@
+/* ===========================
+   Portfolio Section Styles
+   =========================== */
+
+.portfolio {
+    background: var(--light-color);
+    padding: 80px 0;
+}
+
+/* Portfolio Filters */
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 25px;
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--gradient-secondary);
+    color: white;
+    border-color: transparent;
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+}
+
+.portfolio-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.portfolio-item:hover .portfolio-image img {
+    transform: scale(1.1);
+}
+
+/* Portfolio Overlay */
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-overlay h4 {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.portfolio-overlay p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 15px;
+}
+
+.portfolio-link {
+    color: white;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.portfolio-link:hover {
+    color: var(--secondary-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .portfolio-filters {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+}

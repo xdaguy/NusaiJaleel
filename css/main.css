@@ -1,0 +1,28 @@
+/* ===========================
+   Main CSS File - Imports all modules
+   =========================== */
+
+/* Core Styles */
+@import url('variables.css');
+@import url('base.css');
+@import url('components.css');
+
+/* Layout */
+@import url('navigation.css');
+@import url('footer.css');
+
+/* Sections */
+@import url('sections/hero.css');
+@import url('sections/about.css');
+@import url('sections/services.css');
+@import url('sections/portfolio.css');
+@import url('sections/testimonials.css');
+@import url('sections/blog.css');
+@import url('sections/faq.css');
+@import url('sections/contact.css');
+
+/* Utilities */
+@import url('utilities.css');
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
