@@ -36,32 +36,63 @@ function ensureBackToTop() {
 
 ensureBackToTop();
 
-// Skill Bars Animation
-const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px 0px -100px 0px'
-};
+// Skill Bars Animation (smooth fill + count-up)
+(() => {
+    const section = document.querySelector('.skills-section');
+    if (!section) return;
 
-const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const progressBars = entry.target.querySelectorAll('.skill-progress');
-            progressBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 100);
-            });
-            skillObserver.unobserve(entry.target);
+    const animateItem = (item) => {
+        const label = item.querySelector('.skill-percentage');
+        const bar = item.querySelector('.skill-progress');
+        if (!label || !bar) return;
+
+        const target = (() => {
+            const txt = (label.textContent || '').trim();
+            const n = parseInt(txt.replace(/[^0-9]/g, ''), 10);
+            return isNaN(n) ? 0 : Math.max(0, Math.min(100, n));
+        })();
+
+        // Prepare initial state
+        bar.style.width = '0%';
+        label.setAttribute('aria-live', 'polite');
+
+        if (prefersReducedMotion) {
+            bar.style.width = target + '%';
+            label.textContent = target + '%';
+            return;
         }
-    });
-}, observerOptions);
 
-const skillsSection = document.querySelector('.skills-section');
-if (skillsSection) {
-    skillObserver.observe(skillsSection);
-}
+        const duration = 900; // ms
+        const startTime = performance.now();
+
+        const ease = (t) => t < 0.5
+            ? 2 * t * t
+            : 1 - Math.pow(-2 * t + 2, 2) / 2; // easeInOutQuad
+
+        const step = (now) => {
+            const elapsed = now - startTime;
+            const t = Math.min(1, elapsed / duration);
+            const e = ease(t);
+            const current = Math.round(target * e);
+            bar.style.width = current + '%';
+            label.textContent = current + '%';
+            if (t < 1) requestAnimationFrame(step);
+        };
+
+        requestAnimationFrame(step);
+    };
+
+    const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const items = entry.target.querySelectorAll('.skill-item');
+            items.forEach((it, i) => setTimeout(() => animateItem(it), i * 120));
+            obs.unobserve(entry.target);
+        });
+    }, { threshold: 0.3, rootMargin: '0px 0px -10% 0px' });
+
+    io.observe(section);
+})();
 
 // Counter Animation
 function animateCounter(element, target, duration = 2000) {

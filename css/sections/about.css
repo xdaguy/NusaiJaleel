@@ -99,11 +99,16 @@
     height: 100%;
     background: var(--gradient-secondary);
     border-radius: 4px;
-    animation: skillLoad 1.5s ease;
+    width: 0%;
+    transition: width var(--transition-normal);
+    will-change: width;
 }
 
-@keyframes skillLoad {
-    from { width: 0; }
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .skill-progress {
+    transition: none;
+  }
 }
 
 /* Responsive */
