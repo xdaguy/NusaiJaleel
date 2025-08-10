@@ -26,12 +26,12 @@ button:focus-visible {
 }
 
 /* Link micro-interaction */
-a:not(.btn) {
+a:not(.btn):not(.whatsapp-float) {
     position: relative;
     text-decoration: none;
 }
 
-a:not(.btn)::after {
+a:not(.btn):not(.whatsapp-float)::after {
     content: '';
     position: absolute;
     left: 0;
@@ -44,8 +44,8 @@ a:not(.btn)::after {
     transition: transform var(--transition-fast);
 }
 
-a:not(.btn):hover::after,
-a:not(.btn):focus-visible::after {
+a:not(.btn):not(.whatsapp-float):hover::after,
+a:not(.btn):not(.whatsapp-float):focus-visible::after {
     transform: scaleX(1);
 }
 
